@@ -4,16 +4,6 @@
     <nav class="main-nav">
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
       <details>
-        <summary{% if page.url contains '/violations/' %} class="active"{% endif %}>Violations ▾</summary>
-        <div class="nav-dropdown">
-          <a href="{{ '/violations/' | relative_url }}">All Violations</a>
-          <a href="{{ '/violations/sidewalk.html' | relative_url }}">DOT Sidewalk Violations</a>
-          <a href="{{ '/violations/local-law-11.html' | relative_url }}">Local Law 11 / FISP</a>
-          <a href="{{ '/violations/ecb.html' | relative_url }}">DOB ECB / OATH</a>
-          <a href="{{ '/violations/hpd.html' | relative_url }}">HPD Housing</a>
-        </div>
-      </details>
-      <details>
         <summary{% if page.url contains '/services/' %} class="active"{% endif %}>Services ▾</summary>
         <div class="nav-dropdown">
           <a href="{{ '/services/' | relative_url }}">All Services</a>
@@ -22,6 +12,16 @@
           <a href="{{ '/services/painting.html' | relative_url }}">Painting</a>
           <a href="{{ '/services/concrete.html' | relative_url }}">Concrete</a>
           <a href="{{ '/services/construction.html' | relative_url }}">Interior/Exterior Construction</a>
+        </div>
+      </details>
+      <details>
+        <summary{% if page.url contains '/violations/' %} class="active"{% endif %}>Violations ▾</summary>
+        <div class="nav-dropdown">
+          <a href="{{ '/violations/' | relative_url }}">All Violations</a>
+          <a href="{{ '/violations/sidewalk.html' | relative_url }}">DOT Sidewalk Violations</a>
+          <a href="{{ '/violations/local-law-11.html' | relative_url }}">Local Law 11 / FISP</a>
+          <a href="{{ '/violations/ecb.html' | relative_url }}">DOB ECB / OATH</a>
+          <a href="{{ '/violations/hpd.html' | relative_url }}">HPD Housing</a>
         </div>
       </details>
       <a href="{{ '/about.html' | relative_url }}"{% if page.url == '/about.html' %} class="active"{% endif %}>About</a>
