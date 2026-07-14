@@ -71,6 +71,7 @@ section.dark h1, section.dark h2, section.dark h3 { color: #F5F2EC; }
 }
 .brick-band--offset {
   background-position: 12px 0;
+  margin: 4px 0;
 }
 .brick-band--offset-2 {
   background-position: 24px 0;
