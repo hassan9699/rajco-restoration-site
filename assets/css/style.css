@@ -64,12 +64,12 @@ section.dark h1, section.dark h2, section.dark h3 { color: #F5F2EC; }
 
 /* ---------- brick-course band ---------- */
 .brick-band {
-  height: 10px;
+  height: 8px;
   background:
     repeating-linear-gradient(90deg, var(--brick) 0, var(--brick) 32px, transparent 32px, transparent 36px),
     var(--navy-bg);
 }
-.brick-band + .brick-band {
+.brick-band--offset {
   background-position: 18px 0;
 }
 
