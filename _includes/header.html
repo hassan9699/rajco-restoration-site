@@ -3,8 +3,8 @@
     {% include brand-mark.html variant="header" %}
     <nav class="main-nav">
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
-      <details{% if page.url contains '/violations/' %} open{% endif %}>
-        <summary>Violations ▾</summary>
+      <details>
+        <summary{% if page.url contains '/violations/' %} class="active"{% endif %}>Violations ▾</summary>
         <div class="nav-dropdown">
           <a href="{{ '/violations/' | relative_url }}">All Violations</a>
           <a href="{{ '/violations/sidewalk.html' | relative_url }}">DOT Sidewalk Violations</a>
@@ -13,8 +13,8 @@
           <a href="{{ '/violations/hpd.html' | relative_url }}">HPD Housing</a>
         </div>
       </details>
-      <details{% if page.url contains '/services/' %} open{% endif %}>
-        <summary>Services ▾</summary>
+      <details>
+        <summary{% if page.url contains '/services/' %} class="active"{% endif %}>Services ▾</summary>
         <div class="nav-dropdown">
           <a href="{{ '/services/' | relative_url }}">All Services</a>
           <a href="{{ '/services/waterproofing.html' | relative_url }}">Waterproofing</a>

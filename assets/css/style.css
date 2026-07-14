@@ -108,7 +108,8 @@ nav.main-nav > details > summary {
 nav.main-nav > details > summary::-webkit-details-marker { display: none; }
 nav.main-nav > a:hover,
 nav.main-nav > details > summary:hover { color: #fff; background: rgba(255,255,255,0.08); }
-nav.main-nav > a.active { color: var(--brick-light); }
+nav.main-nav > a.active,
+nav.main-nav > details > summary.active { color: var(--brick-light); }
 
 nav.main-nav > details { position: relative; }
 nav.main-nav > details[open] > summary { color: #fff; background: rgba(255,255,255,0.08); }
