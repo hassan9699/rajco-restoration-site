@@ -192,6 +192,7 @@ nav.main-nav > details[open] > summary { color: #fff; background: rgba(255,255,2
 }
 .hero h1 { color: #fff; max-width: 720px; }
 .hero p.lede { font-size: 1.15rem; max-width: 620px; color: #A8B4C4; }
+.hero p.cta-label { font-weight: 700; font-size: 1.05rem; color: #F5F2EC; margin: 0 0 0.9rem; }
 
 /* ---------- card grids ---------- */
 .card-grid {
