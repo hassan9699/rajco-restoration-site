@@ -1,0 +1,23 @@
+{% assign variant = include.variant | default: "header" %}
+{% if variant == "inline" %}
+  {% assign icon_main = "#1D3A5F" %}
+  {% assign icon_accent = "#B0492F" %}
+{% else %}
+  {% assign icon_main = "#F5F2EC" %}
+  {% assign icon_accent = "#C96A4F" %}
+{% endif %}
+<a href="{{ '/' | relative_url }}" class="brand-mark brand-mark--{{ variant }}">
+  <svg class="brand-mark__icon" viewBox="2 16 80 50" aria-hidden="true">
+    <rect x="10" y="16" width="30" height="14" fill="{{ icon_main }}"/>
+    <rect x="44" y="16" width="30" height="14" fill="{{ icon_main }}"/>
+    <rect x="2" y="34" width="20" height="14" fill="{{ icon_main }}"/>
+    <rect x="26" y="34" width="30" height="14" fill="{{ icon_accent }}"/>
+    <rect x="60" y="34" width="22" height="14" fill="{{ icon_main }}"/>
+    <rect x="10" y="52" width="30" height="14" fill="{{ icon_main }}"/>
+    <rect x="44" y="52" width="30" height="14" fill="{{ icon_main }}"/>
+  </svg>
+  <span class="brand-mark__wordmark">
+    <span class="brand-mark__name">Rajco</span>
+    <span class="brand-mark__suffix">Restoration Corp</span>
+  </span>
+</a>

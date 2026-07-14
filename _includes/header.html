@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="header-row">
+    {% include brand-mark.html variant="header" %}
+    <nav class="main-nav">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+      <details{% if page.url contains '/violations/' %} open{% endif %}>
+        <summary>Violations ▾</summary>
+        <div class="nav-dropdown">
+          <a href="{{ '/violations/' | relative_url }}">All Violations</a>
+          <a href="{{ '/violations/sidewalk.html' | relative_url }}">DOT Sidewalk Violations</a>
+          <a href="{{ '/violations/local-law-11.html' | relative_url }}">Local Law 11 / FISP</a>
+          <a href="{{ '/violations/ecb.html' | relative_url }}">DOB ECB / OATH</a>
+          <a href="{{ '/violations/hpd.html' | relative_url }}">HPD Housing</a>
+        </div>
+      </details>
+      <details{% if page.url contains '/services/' %} open{% endif %}>
+        <summary>Services ▾</summary>
+        <div class="nav-dropdown">
+          <a href="{{ '/services/' | relative_url }}">All Services</a>
+          <a href="{{ '/services/waterproofing.html' | relative_url }}">Waterproofing</a>
+          <a href="{{ '/services/brickwork.html' | relative_url }}">Brickwork</a>
+          <a href="{{ '/services/painting.html' | relative_url }}">Painting</a>
+          <a href="{{ '/services/concrete.html' | relative_url }}">Concrete</a>
+          <a href="{{ '/services/construction.html' | relative_url }}">Interior/Exterior Construction</a>
+        </div>
+      </details>
+      <a href="{{ '/about.html' | relative_url }}"{% if page.url == '/about.html' %} class="active"{% endif %}>About</a>
+      <a href="{{ '/contact.html' | relative_url }}"{% if page.url == '/contact.html' %} class="active"{% endif %}>Contact</a>
+      <a href="tel:+19174098273" class="btn btn-outline" style="margin-left:0.5rem;">Call (917) 409-8273</a>
+    </nav>
+  </div>
+  <div class="brick-band"></div>
+</header>
