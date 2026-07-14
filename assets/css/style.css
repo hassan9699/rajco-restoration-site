@@ -70,7 +70,10 @@ section.dark h1, section.dark h2, section.dark h3 { color: #F5F2EC; }
     var(--navy-bg);
 }
 .brick-band--offset {
-  background-position: 18px 0;
+  background-position: 12px 0;
+}
+.brick-band--offset-2 {
+  background-position: 24px 0;
 }
 
 /* ---------- header / nav ---------- */
