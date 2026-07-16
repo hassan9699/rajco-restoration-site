@@ -171,7 +171,7 @@ nav.main-nav > details[open] > summary { color: #fff; background: rgba(255,255,2
 .btn-primary { background: var(--brick); color: #fff; }
 .btn-primary:hover { background: var(--brick-light); color: #fff; }
 .btn-outline { border-color: currentColor; color: inherit; }
-.btn-outline:hover { background: rgba(255,255,255,0.08); }
+.btn-outline:hover { background: rgba(255,255,255,0.08); color: inherit; }
 .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
 .cta-band {
