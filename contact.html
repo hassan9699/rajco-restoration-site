@@ -7,15 +7,78 @@ description: Contact Rajco Restoration Corp for a free inspection and estimate. 
   <div class="container">
     <span class="eyebrow">Contact</span>
     <h1>Get a free inspection and estimate</h1>
-    <p class="lede">Call or email for a free estimate — tell us about the violation or the project, and we'll give you a straight answer on what it takes and what it costs.</p>
+    <p class="lede">Fill out the form below, or call or email directly — tell us about the violation or the project, and we'll give you a straight answer on what it takes and what it costs.</p>
     <div class="cta-row">
-      <a href="tel:+19174098273" class="btn btn-primary" onclick="gtag('event','conversion',{'send_to':'AW-18323249827/LloYCPmYmdEcEKO1mqFE'});">Call (917) 409-8273</a>
-      <a href="mailto:info@rajcorestoration.com" class="btn btn-outline" onclick="gtag('event','conversion',{'send_to':'AW-18323249827/LloYCPmYmdEcEKO1mqFE'});">info@rajcorestoration.com</a>
+      <a href="tel:+19174098273" class="btn btn-primary">Call (917) 409-8273</a>
+      <a href="mailto:info@rajcorestoration.com" class="btn btn-outline">info@rajcorestoration.com</a>
     </div>
   </div>
 </section>
 
 <section>
+  <div class="container">
+    <span class="eyebrow">Request a Quote</span>
+    <h2>Tell us about the property</h2>
+    <p>We'll get back to you within one business day with a straight answer on scope and cost.</p>
+
+    <form id="quoteForm" class="quote-form" novalidate>
+      <div class="form-row form-hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-two-col">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email <span class="hint">(optional)</span></label>
+        <input type="email" id="email" name="email" autocomplete="email">
+      </div>
+
+      <div class="form-row">
+        <label for="address">Property address</label>
+        <input type="text" id="address" name="address" autocomplete="street-address" required>
+      </div>
+
+      <div class="form-row">
+        <label for="service">What do you need help with?</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Sidewalk / DOT violation</option>
+          <option>Facade / Local Law 11 violation</option>
+          <option>HPD violation</option>
+          <option>ECB / DOB violation</option>
+          <option>Concrete</option>
+          <option>Brickwork</option>
+          <option>Painting</option>
+          <option>Waterproofing</option>
+          <option>Roofing</option>
+          <option>Exterior Construction</option>
+          <option>Interior Remodeling</option>
+          <option>Not sure / other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message <span class="hint">(optional)</span></label>
+        <textarea id="message" name="message" rows="4" placeholder="What are you seeing -- a crack, a leak, a notice from the city?"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Request a Free Estimate</button>
+      <p id="formStatus" class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<section class="alt">
   <div class="container detail-columns">
     <div class="detail-block">
       <h2>Service area</h2>
@@ -37,7 +100,40 @@ description: Contact Rajco Restoration Corp for a free inspection and estimate. 
     <h2>Prefer to book a time directly?</h2>
     <p>Schedule a free inspection on our calendar — pick a time that works for you.</p>
     <div class="cta-row">
-      <a href="https://calendar.app.google/Ekdaq9mmtoYVgrJr7" class="btn btn-primary" target="_blank" rel="noopener" onclick="gtag('event','conversion',{'send_to':'AW-18323249827/LloYCPmYmdEcEKO1mqFE'});">Book an Appointment</a>
+      <a href="https://calendar.app.google/Ekdaq9mmtoYVgrJr7" class="btn btn-primary" target="_blank" rel="noopener">Book an Appointment</a>
     </div>
   </div>
 </section>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var statusEl = document.getElementById('formStatus');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var data = Object.fromEntries(new FormData(form).entries());
+
+    submitBtn.disabled = true;
+    statusEl.textContent = 'Sending…';
+    statusEl.className = 'form-status';
+
+    try {
+      var resp = await fetch('https://nyc-leads.fly.dev/api/public/quote_request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      var result = await resp.json();
+      if (resp.ok && result.success) {
+        window.location.href = '{{ "/thank-you.html" | relative_url }}';
+        return;
+      }
+      statusEl.textContent = result.error || "Something went wrong — please call or email instead.";
+      statusEl.className = 'form-status form-status--error';
+    } catch (err) {
+      statusEl.textContent = "Something went wrong — please call or email instead.";
+      statusEl.className = 'form-status form-status--error';
+    }
+    submitBtn.disabled = false;
+  });
+</script>
