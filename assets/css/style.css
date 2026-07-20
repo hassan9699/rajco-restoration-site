@@ -305,6 +305,15 @@ a.card:hover h3 { color: var(--brick); }
   font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
+.steps--5 { grid-template-columns: repeat(5, 1fr); }
+.card ul { color: var(--muted-text); font-size: 0.95rem; margin: 0; }
+.trust-line {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: #A8B4C4;
+  margin-top: 1.25rem;
+}
 
 /* ---------- content page blocks (violations / services detail) ---------- */
 .detail-block { margin-top: 2rem; }
