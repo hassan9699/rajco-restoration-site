@@ -107,6 +107,7 @@ header.site-header {
   background: var(--navy-bg);
 }
 .header-row {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -115,6 +116,28 @@ header.site-header {
   margin: 0 auto;
   gap: 1.5rem;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.header-cta { white-space: nowrap; }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+.nav-toggle-bar { display: block; width: 20px; height: 2px; background: #fff; }
 nav.main-nav {
   display: flex;
   align-items: center;
@@ -201,6 +224,10 @@ nav.main-nav > details[open] > summary { color: #fff; background: rgba(255,255,2
 .btn-outline { border-color: currentColor; color: inherit; }
 .btn-outline:hover { background: rgba(255,255,255,0.08); color: inherit; }
 .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.cta-email { margin: 0.85rem 0 0; font-size: 0.95rem; }
+.cta-email a { text-decoration: underline; }
+.hero .cta-email a, .cta-band .cta-email a { color: #fff; }
+.cta-band .cta-email { text-align: center; }
 
 .cta-band {
   background: var(--brick);
@@ -352,8 +379,24 @@ footer.site-footer li { margin-bottom: 0.5em; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 768px) {
-  .header-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-  nav.main-nav { width: 100%; }
+  .nav-toggle { display: flex; }
+  .header-cta { padding: 0.6rem 0.85rem; font-size: 0.9rem; }
+  nav.main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--navy-bg);
+    padding: 0.5rem 1.5rem 1rem;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    z-index: 30;
+  }
+  nav.main-nav.open { display: flex; }
+  nav.main-nav > a, nav.main-nav > details > summary { width: 100%; }
   .nav-dropdown { position: static; box-shadow: none; margin-top: 0.25rem; }
   .card-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
