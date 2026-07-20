@@ -6,7 +6,7 @@
   --brick-light: #C96A4F;
   --cream: #FBFAF8;
   --body-text: #3C382F;
-  --muted-text: #7A756C;
+  --muted-text: #706B62;
   --border: #E4E0D8;
   --font-serif: "Source Serif 4", Georgia, serif;
   --font-sans: "Archivo", Helvetica, Arial, sans-serif;
@@ -26,6 +26,34 @@ img, svg { max-width: 100%; display: block; }
 a { color: var(--brick); text-decoration: none; }
 a:hover { color: var(--navy-text); }
 ul { padding-left: 1.2em; }
+
+/* ---------- accessibility ---------- */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 100;
+  background: var(--navy-bg);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 4px 4px;
+  font-weight: 700;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--brick-light);
+  outline-offset: 2px;
+}
 
 /* ---------- typography ---------- */
 h1, h2, h3 {
@@ -290,7 +318,7 @@ footer.site-footer li { margin-bottom: 0.5em; }
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,0.12);
   font-size: 0.85rem;
-  color: #7C8A9C;
+  color: #8896A8;
 }
 
 /* ---------- forms ---------- */
