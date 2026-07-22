@@ -1,0 +1,163 @@
+---
+title: Free On-Site Estimate — NYC Construction & Restoration
+layout: landing
+description: Concrete, brickwork & masonry, siding, fencing, patios, waterproofing, and general construction — licensed and insured, serving all 5 boroughs. Request a free on-site estimate.
+robots: noindex
+---
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Free On-Site Estimate</span>
+    <h1>NYC's Trusted Concrete, Brick &amp; Masonry Contractor</h1>
+    <p class="lede">Concrete, brickwork &amp; masonry, siding, fencing, patios, waterproofing, and general construction — done right, guaranteed.</p>
+    <p class="trust-line">Licensed &amp; insured &middot; NYC DCA Lic. #2065160-DCA &middot; Serving all 5 boroughs</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">Request a Quote</span>
+    <h2>Tell us about the property</h2>
+    <p>We'll get back to you within one business day with a straight answer on scope and cost.</p>
+
+    <form id="quoteForm" class="quote-form" novalidate>
+      <div class="form-row form-hp" aria-hidden="true">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-two-col">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email <span class="hint">(optional)</span></label>
+        <input type="email" id="email" name="email" autocomplete="email">
+      </div>
+
+      <div class="form-row">
+        <label for="address">Property address</label>
+        <input type="text" id="address" name="address" autocomplete="street-address" required>
+      </div>
+
+      <div class="form-row">
+        <label for="service">What do you need help with?</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Concrete</option>
+          <option>Brickwork</option>
+          <option>Siding, Fencing &amp; Patios</option>
+          <option>Waterproofing</option>
+          <option>General Construction</option>
+          <option>Painting</option>
+          <option>Interior Remodeling</option>
+          <option>Sidewalk / DOT violation</option>
+          <option>Facade / Local Law 11 violation</option>
+          <option>HPD violation</option>
+          <option>ECB / DOB violation</option>
+          <option>Not sure / other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Message <span class="hint">(optional)</span></label>
+        <textarea id="message" name="message" rows="4" placeholder="What are you looking to get done?"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Get My Free Estimate</button>
+      <p id="formStatus" class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <span class="eyebrow">What We Do</span>
+    <h2>Exterior &amp; general construction, done right</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Concrete &amp; Pavers</h3>
+        <p>Sidewalks, driveways, steps. Free on-site estimate.</p>
+      </div>
+      <div class="card">
+        <h3>Brickwork &amp; Masonry</h3>
+        <p>Facade repair, before it becomes a violation.</p>
+      </div>
+      <div class="card">
+        <h3>Siding, Fencing &amp; Patios</h3>
+        <p>From patios and driveways to fencing and retaining walls.</p>
+      </div>
+      <div class="card">
+        <h3>Waterproofing</h3>
+        <p>Stop water intrusion early — foundation, roof &amp; facade.</p>
+      </div>
+      <div class="card">
+        <h3>General Construction</h3>
+        <p>Siding, fencing, pavers &amp; more, retaining walls and gutters too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">How It Works</span>
+    <h2>From estimate to finished job, in three steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Free inspection</h3>
+        <p>We review the property and the scope, free and no obligation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Straight estimate</h3>
+        <p>A clear plan and a straight price, no surprises.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Work completed</h3>
+        <p>Licensed trades complete the work, clean and on schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var statusEl = document.getElementById('formStatus');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var data = Object.fromEntries(new FormData(form).entries());
+
+    submitBtn.disabled = true;
+    statusEl.textContent = 'Sending…';
+    statusEl.className = 'form-status';
+
+    try {
+      var resp = await fetch('https://nyc-leads.fly.dev/api/public/quote_request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      var result = await resp.json();
+      if (resp.ok && result.success) {
+        window.location.href = '{{ "/thank-you.html" | relative_url }}';
+        return;
+      }
+      statusEl.textContent = result.error || "Something went wrong — please call instead.";
+      statusEl.className = 'form-status form-status--error';
+    } catch (err) {
+      statusEl.textContent = "Something went wrong — please call instead.";
+      statusEl.className = 'form-status form-status--error';
+    }
+    submitBtn.disabled = false;
+  });
+</script>

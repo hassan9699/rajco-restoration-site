@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="header-row">
+    {% include brand-mark.html variant="header" %}
+    <a href="tel:+19174098273" class="btn btn-outline header-cta">Call (917) 409-8273</a>
+  </div>
+  <div class="brick-band"></div>
+  <div class="brick-band brick-band--offset"></div>
+  <div class="brick-band"></div>
+</header>
+<main id="main">
+{{ content }}
+</main>
+<footer class="site-footer">
+  <div class="container footer-bottom" style="padding-top:2rem;">
+    <p style="margin:0 0 0.4em;">
+      <a href="tel:+19174098273">(917) 409-8273</a> &middot;
+      <a href="mailto:info@rajcorestoration.com">info@rajcorestoration.com</a>
+    </p>
+    Fully licensed and insured &middot; NYC DCA Home Improvement Contractor License #2065160-DCA<br>
+    &copy; {{ 'now' | date: "%Y" }} Rajco Restoration Corp. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>
