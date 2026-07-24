@@ -387,7 +387,11 @@ footer.site-footer li { margin-bottom: 0.5em; }
 .form-status--ok { color: #1a7a3e; font-weight: 600; }
 
 /* ---------- responsive ---------- */
-@media (max-width: 768px) {
+/* Nav collapses to the hamburger menu earlier than the 768px content
+   breakpoint below -- at 5 top-level items, the inline nav starts
+   wrapping awkwardly between ~768-895px, so it switches to the
+   hamburger before that gap. */
+@media (max-width: 900px) {
   .nav-toggle { display: flex; }
   .header-cta { padding: 0.6rem 0.85rem; font-size: 0.9rem; }
   nav.main-nav {
@@ -407,6 +411,8 @@ footer.site-footer li { margin-bottom: 0.5em; }
   nav.main-nav.open { display: flex; }
   nav.main-nav > a, nav.main-nav > details > summary { width: 100%; }
   .nav-dropdown { position: static; box-shadow: none; margin-top: 0.25rem; }
+}
+@media (max-width: 768px) {
   .card-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
   .detail-columns { grid-template-columns: 1fr; }
