@@ -44,8 +44,24 @@ description: Contact Rajco Restoration Corp for a free inspection and estimate. 
       </div>
 
       <div class="form-row">
-        <label for="address">Property address</label>
-        <input type="text" id="address" name="address" autocomplete="street-address" required>
+        <label for="address_street">Street address</label>
+        <input type="text" id="address_street" name="address_street" autocomplete="address-line1" required>
+      </div>
+
+      <div class="form-row">
+        <label for="address_city">City</label>
+        <input type="text" id="address_city" name="address_city" autocomplete="address-level2" required>
+      </div>
+
+      <div class="form-two-col">
+        <div class="form-row">
+          <label for="address_state">State</label>
+          <input type="text" id="address_state" name="address_state" autocomplete="address-level1" required>
+        </div>
+        <div class="form-row">
+          <label for="address_zip">Zip code</label>
+          <input type="text" id="address_zip" name="address_zip" autocomplete="postal-code" required>
+        </div>
       </div>
 
       <div class="form-row">
@@ -111,6 +127,11 @@ description: Contact Rajco Restoration Corp for a free inspection and estimate. 
     var statusEl = document.getElementById('formStatus');
     var submitBtn = form.querySelector('button[type="submit"]');
     var data = Object.fromEntries(new FormData(form).entries());
+    data.address = [data.address_street, data.address_city, data.address_state, data.address_zip].filter(Boolean).join(', ');
+    delete data.address_street;
+    delete data.address_city;
+    delete data.address_state;
+    delete data.address_zip;
 
     submitBtn.disabled = true;
     statusEl.textContent = 'Sending…';
